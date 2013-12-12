@@ -7,15 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-@class ELFeedbackManager;
+#import "ELFeedbackDataProvider.h"
+
+@class ELFeedbackOptionsViewController;
+@protocol ELFeedbackOptionsViewControllerDelegate <NSObject>
+
+@optional
+- (void)feedbackOptionsViewControllerDidFinish:(ELFeedbackOptionsViewController *)controller;
+
+@end
 
 @interface ELFeedbackOptionsViewController : UITableViewController
 
-@property (nonatomic, weak) ELFeedbackManager *feedbackManager;
+@property (nonatomic, weak) id<ELFeedbackOptionsViewControllerDelegate> delegate;
 
 /**
  Designated initializer
  */
-- (instancetype)initWithSnapshotImage:(UIImage *)snapshotImage;
+- (instancetype)initWithDataProvider:(ELFeedbackDataProvider *)dataProvider;
 
 @end

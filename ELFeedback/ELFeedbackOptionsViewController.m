@@ -8,18 +8,24 @@
 
 #import "ELFeedbackOptionsViewController.h"
 #import <MessageUI/MessageUI.h>
+#import "ELFeedbackDataItem.h"
 
 NSString * const ELFeedbackOptionsViewControllerImageCellID = @"image";
+NSString * const ELFeedbackOptionsViewControllerKeyValueCellID = @"keyValueCell";
 
 @interface ELFeedbackOptionsViewController ()
 <
 UIActionSheetDelegate,
 UINavigationControllerDelegate,
-UIImagePickerControllerDelegate
+UIImagePickerControllerDelegate,
+MFMailComposeViewControllerDelegate
 >
 
-@property (nonatomic, strong) UIImage *snapshotImage;
+// views
 @property (nonatomic, strong) UIActionSheet *snapshotCellSelectedActionSheet;
+
+// data
+@property (nonatomic, strong) ELFeedbackDataProvider *dataProvider;
 
 @end
 
@@ -27,11 +33,11 @@ UIImagePickerControllerDelegate
 
 #pragma mark - Initialization
 
-- (instancetype)initWithSnapshotImage:(UIImage *)snapshotImage
+- (instancetype)initWithDataProvider:(ELFeedbackDataProvider *)dataProvider
 {
     self = [self initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        self.snapshotImage = snapshotImage;
+        self.dataProvider = dataProvider;
     }
     return self;
 }
@@ -41,13 +47,6 @@ UIImagePickerControllerDelegate
 - (NSString *)title
 {
     return @"Обратная связь";
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ELFeedbackOptionsViewControllerImageCellID];
 }
 
 #pragma mark - Navigation Interface
@@ -65,26 +64,54 @@ UIImagePickerControllerDelegate
 
 #pragma mark - Table View
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    if (section == 0)
+        return 1;
+
+    else
+        return self.dataProvider.items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [self tableView:tableView imageCellForRowAtIndexPath:indexPath];
+    if (indexPath.section == 0)
+        return [self tableView:tableView imageCellForRowAtIndexPath:indexPath];
+    
+    else
+        return [self tableView:tableView keyValueCellForRowAtIndexPath:indexPath];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView imageCellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ELFeedbackOptionsViewControllerImageCellID forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ELFeedbackOptionsViewControllerImageCellID];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ELFeedbackOptionsViewControllerImageCellID];
         cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     
-    cell.imageView.image = self.snapshotImage;
+    cell.imageView.image = self.dataProvider.snapshotImage;
     cell.textLabel.text = @"Скриншот";
+    
+    return cell;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView keyValueCellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ELFeedbackOptionsViewControllerKeyValueCellID];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ELFeedbackOptionsViewControllerKeyValueCellID];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    
+    ELFeedbackDataItem *item = self.dataProvider.items[indexPath.row];
+    cell.textLabel.text = item.title;
+    cell.detailTextLabel.text = item.value;
     
     return cell;
 }
@@ -108,7 +135,7 @@ UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    self.snapshotImage = info[UIImagePickerControllerOriginalImage];
+    self.dataProvider.snapshotImage = info[UIImagePickerControllerOriginalImage];
     [picker dismissViewControllerAnimated:YES completion:nil];
     [self.tableView reloadData];
 }
@@ -152,11 +179,36 @@ UIImagePickerControllerDelegate
     }
 }
 
+#pragma mark - Mail Compose View Controller
+
+- (void)presentMailComposeViewController
+{
+    MFMailComposeViewController *controller = [MFMailComposeViewController new];
+    controller.mailComposeDelegate = self;
+    [controller setSubject:[NSString stringWithFormat:@"[%@]", [[NSBundle mainBundle] objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleNameKey]]];
+    [controller setMessageBody:@"Feedback message body" isHTML:NO];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    [controller dismissViewControllerAnimated:YES completion:^{
+        if (result == MFMailComposeResultSent) {
+            if ([self.delegate respondsToSelector:@selector(feedbackOptionsViewControllerDidFinish:)])
+                [self.delegate feedbackOptionsViewControllerDidFinish:self];
+            return;
+            
+        } else if (error != nil)
+            [[[UIAlertView alloc] initWithTitle:error.localizedDescription message:nil delegate:nil cancelButtonTitle:@"Закрыть" otherButtonTitles:nil] show]; 
+    }];
+}
+
 #pragma mark - Actions
 
 - (void)cancel
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if ([self.delegate respondsToSelector:@selector(feedbackOptionsViewControllerDidFinish:)])
+        [self.delegate feedbackOptionsViewControllerDidFinish:self];
 }
 
 - (void)submit
@@ -164,12 +216,9 @@ UIImagePickerControllerDelegate
     if (![MFMailComposeViewController canSendMail])
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:%@"]];
     
-    else {
-        MFMailComposeViewController *controller = [MFMailComposeViewController new];
-        [controller setSubject:[NSString stringWithFormat:@"[%@]", [[NSBundle mainBundle] objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleNameKey]]];
-        [controller setMessageBody:@"Feedback message body" isHTML:NO];
-        [self presentViewController:controller animated:YES completion:nil];
-    }
+    else
+        [self presentMailComposeViewController];
+    
 }
 
 @end

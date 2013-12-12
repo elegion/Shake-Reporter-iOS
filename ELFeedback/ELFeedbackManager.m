@@ -16,6 +16,15 @@
 
 NSString * const ELFeedbackManagerDidReceiveShakeMotionNotification = @"ELFeedbackManagerDidReceiveShakeMotionNotification";
 
+@interface ELFeedbackManager ()
+<
+ELFeedbackOptionsViewControllerDelegate
+>
+
+@property (nonatomic, strong) ELFeedbackOptionsViewController *optionsViewController;
+
+@end
+
 @implementation ELFeedbackManager
 
 + (instancetype)sharedManager
@@ -53,12 +62,30 @@ NSString * const ELFeedbackManagerDidReceiveShakeMotionNotification = @"ELFeedba
 
 - (void)didReceiveShakeMotionNotification:(NSNotification *)notification
 {
+    if (self.optionsViewController.view.window != nil)
+        // view controller is already presented
+        return;
+
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-    UIImage *snapshot = [[UIApplication sharedApplication].keyWindow ELSnapshot];
-    ELFeedbackOptionsViewController *controller = [[ELFeedbackOptionsViewController alloc] initWithSnapshotImage:snapshot];
-    controller.feedbackManager = self;
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:navigationController animated:YES completion:nil];
+    [self presentOptionsViewControllerAnimated:YES];
+}
+
+#pragma mark - Options View Controller
+
+- (void)presentOptionsViewControllerAnimated:(BOOL)animated
+{
+    ELFeedbackDataProvider *dataProvider = [[ELFeedbackDataProvider alloc] initWithSnapshotImage:[[UIApplication sharedApplication].keyWindow ELSnapshot]];
+    self.optionsViewController = [[ELFeedbackOptionsViewController alloc] initWithDataProvider:dataProvider];
+    self.optionsViewController.delegate = self;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.optionsViewController];
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:navigationController animated:animated completion:nil];
+}
+
+- (void)feedbackOptionsViewControllerDidFinish:(ELFeedbackOptionsViewController *)controller
+{
+    NSParameterAssert(controller == self.optionsViewController);
+    [controller dismissViewControllerAnimated:YES completion:nil];
+    self.optionsViewController = nil;
 }
 
 @end
