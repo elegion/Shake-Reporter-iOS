@@ -42,9 +42,9 @@ MFMailComposeViewControllerDelegate
     NSMutableString *itemsHTML = [NSMutableString new];
     [dataProvider.items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         ELFeedbackDataItem *item = obj;
-        [itemsHTML appendFormat:@"<dt><strong>%@</strong></dt><dd>%@</dd><dl>", item.title, item.value];
+        [itemsHTML appendFormat:@"<dt><bold>%@</bold></dt><dd>%@</dd><dl>", item.title, item.value];
     }];
-    [controller setMessageBody:[NSString stringWithFormat:@"<dl>%@</dl>", itemsHTML] isHTML:YES];
+    [controller setMessageBody:[NSString stringWithFormat:@"%@<br><br><dl>%@</dl>", dataProvider.descriptionText ?: @"", itemsHTML] isHTML:YES];
     [controller addAttachmentData:UIImagePNGRepresentation(dataProvider.snapshotImage) mimeType:@"image/png" fileName:@"screenshot.png"];
     
     [self.presentingController presentViewController:controller animated:YES completion:nil];

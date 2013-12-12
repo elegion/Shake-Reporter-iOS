@@ -12,6 +12,7 @@
 @interface ELFeedbackDataProvider : NSObject
 
 @property (nonatomic, strong) UIImage *snapshotImage;
+@property (nonatomic, copy) NSString *descriptionText;
 @property (nonatomic, strong) NSArray *items;
 
 - (instancetype)initWithSnapshotImage:(UIImage *)snapshotImage;

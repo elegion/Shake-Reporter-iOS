@@ -8,16 +8,19 @@
 
 #import "ELFeedbackOptionsViewController.h"
 #import "ELFeedbackDataSender.h"
+#import "ELFeedbackCommentCell.h"
 
 NSString * const ELFeedbackOptionsViewControllerImageCellID = @"image";
 NSString * const ELFeedbackOptionsViewControllerKeyValueCellID = @"keyValueCell";
+NSString * const ELFeedbackOptionsViewControllerCommentCellID = @"comment";
 
 @interface ELFeedbackOptionsViewController ()
 <
 UIActionSheetDelegate,
 UINavigationControllerDelegate,
 UIImagePickerControllerDelegate,
-ELFeedbackDataSenderDelegate
+ELFeedbackDataSenderDelegate,
+UITextViewDelegate
 >
 
 // views
@@ -73,19 +76,44 @@ ELFeedbackDataSenderDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0)
-        return 1;
+        return 2;
 
     else
         return self.dataProvider.items.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([indexPath isEqual:[NSIndexPath indexPathForRow:0 inSection:0]])
+        return 88;
+    else
+        return 44;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0)
-        return [self tableView:tableView imageCellForRowAtIndexPath:indexPath];
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0)
+            return [self tableView:tableView commentCellForRowAtIndexPath:indexPath];
+        else
+            return [self tableView:tableView imageCellForRowAtIndexPath:indexPath];
     
-    else
+    } else
         return [self tableView:tableView keyValueCellForRowAtIndexPath:indexPath];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView commentCellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ELFeedbackCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:ELFeedbackOptionsViewControllerCommentCellID];
+    if (cell == nil) {
+        cell = [[ELFeedbackCommentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ELFeedbackOptionsViewControllerCommentCellID];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.textView.delegate = self;
+    }
+    
+    cell.textView.text = self.dataProvider.descriptionText;
+    
+    return cell;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView imageCellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -122,6 +150,11 @@ ELFeedbackDataSenderDelegate
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if ([cell.reuseIdentifier isEqualToString:ELFeedbackOptionsViewControllerImageCellID])
         [self.snapshotCellSelectedActionSheet showInView:self.view];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [scrollView endEditing:YES]; // dismiss keyboard on scroll
 }
 
 #pragma mark - Image Picker Controller
@@ -191,6 +224,14 @@ ELFeedbackDataSenderDelegate
         
     } else
         [[[UIAlertView alloc] initWithTitle:error.localizedDescription message:nil delegate:nil cancelButtonTitle:@"Закрыть" otherButtonTitles:nil] show];
+}
+
+#pragma mark - Text View
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    self.dataProvider.descriptionText = [textView.text stringByReplacingCharactersInRange:range withString:text];
+    return YES;
 }
 
 #pragma mark - Actions
