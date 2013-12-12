@@ -10,6 +10,8 @@
 
 @interface ELFeedbackDataItem ()
 
+@property (nonatomic, copy) ELFeedbackDataItemValueBlock valueBlock;
+
 @end
 
 @implementation ELFeedbackDataItem

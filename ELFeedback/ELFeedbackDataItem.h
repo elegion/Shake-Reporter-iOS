@@ -14,7 +14,6 @@ typedef NSString *(^ELFeedbackDataItemValueBlock)();
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *value;
-@property (nonatomic, copy) ELFeedbackDataItemValueBlock valueBlock;
 
 - (instancetype)initWithTitle:(NSString *)title value:(NSString *)value;
 - (instancetype)initWithTitle:(NSString *)title valueBlock:(ELFeedbackDataItemValueBlock)valueBlock;

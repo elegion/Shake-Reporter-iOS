@@ -23,6 +23,7 @@
 		11EBDA031859AD990048DF7F /* UIView+ELSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EBDA021859AD990048DF7F /* UIView+ELSnapshot.m */; };
 		11EBDA061859C1580048DF7F /* ELFeedbackDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EBDA051859C1580048DF7F /* ELFeedbackDataProvider.m */; };
 		11EBDA091859C3680048DF7F /* ELFeedbackDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EBDA081859C3680048DF7F /* ELFeedbackDataItem.m */; };
+		11EBDA0C1859DB340048DF7F /* ELFeedbackDataSender.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EBDA0B1859DB340048DF7F /* ELFeedbackDataSender.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,8 @@
 		11EBDA051859C1580048DF7F /* ELFeedbackDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELFeedbackDataProvider.m; sourceTree = "<group>"; };
 		11EBDA071859C3680048DF7F /* ELFeedbackDataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELFeedbackDataItem.h; sourceTree = "<group>"; };
 		11EBDA081859C3680048DF7F /* ELFeedbackDataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELFeedbackDataItem.m; sourceTree = "<group>"; };
+		11EBDA0A1859DB340048DF7F /* ELFeedbackDataSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELFeedbackDataSender.h; sourceTree = "<group>"; };
+		11EBDA0B1859DB340048DF7F /* ELFeedbackDataSender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELFeedbackDataSender.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +145,8 @@
 				11EBDA081859C3680048DF7F /* ELFeedbackDataItem.m */,
 				11EBDA041859C1580048DF7F /* ELFeedbackDataProvider.h */,
 				11EBDA051859C1580048DF7F /* ELFeedbackDataProvider.m */,
+				11EBDA0A1859DB340048DF7F /* ELFeedbackDataSender.h */,
+				11EBDA0B1859DB340048DF7F /* ELFeedbackDataSender.m */,
 				11AD014E1858BBA80022C956 /* ELFeedbackManager.h */,
 				11AD014F1858BBA80022C956 /* ELFeedbackManager.m */,
 				11AD01571858C0810022C956 /* ELFeedbackOptionsViewController.h */,
@@ -226,6 +231,7 @@
 				11AD01551858BBA80022C956 /* ELRuntimeClassModifications.m in Sources */,
 				11AD01561858BBA80022C956 /* UIWindow+ELMotionEnded.m in Sources */,
 				11EBDA091859C3680048DF7F /* ELFeedbackDataItem.m in Sources */,
+				11EBDA0C1859DB340048DF7F /* ELFeedbackDataSender.m in Sources */,
 				11AD01211858B90F0022C956 /* ELViewController.m in Sources */,
 				11AD01171858B90F0022C956 /* main.m in Sources */,
 				11EBDA061859C1580048DF7F /* ELFeedbackDataProvider.m in Sources */,

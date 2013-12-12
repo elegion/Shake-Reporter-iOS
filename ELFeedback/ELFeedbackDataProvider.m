@@ -7,7 +7,6 @@
 //
 
 #import "ELFeedbackDataProvider.h"
-#import "ELFeedbackDataItem.h"
 
 @interface ELFeedbackDataProvider ()
 

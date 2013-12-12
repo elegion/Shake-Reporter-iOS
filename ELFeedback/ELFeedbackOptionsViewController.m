@@ -7,8 +7,7 @@
 //
 
 #import "ELFeedbackOptionsViewController.h"
-#import <MessageUI/MessageUI.h>
-#import "ELFeedbackDataItem.h"
+#import "ELFeedbackDataSender.h"
 
 NSString * const ELFeedbackOptionsViewControllerImageCellID = @"image";
 NSString * const ELFeedbackOptionsViewControllerKeyValueCellID = @"keyValueCell";
@@ -18,7 +17,7 @@ NSString * const ELFeedbackOptionsViewControllerKeyValueCellID = @"keyValueCell"
 UIActionSheetDelegate,
 UINavigationControllerDelegate,
 UIImagePickerControllerDelegate,
-MFMailComposeViewControllerDelegate
+ELFeedbackDataSenderDelegate
 >
 
 // views
@@ -26,6 +25,7 @@ MFMailComposeViewControllerDelegate
 
 // data
 @property (nonatomic, strong) ELFeedbackDataProvider *dataProvider;
+@property (nonatomic, strong) ELFeedbackDataSender *dataSender;
 
 @end
 
@@ -38,6 +38,7 @@ MFMailComposeViewControllerDelegate
     self = [self initWithStyle:UITableViewStyleGrouped];
     if (self) {
         self.dataProvider = dataProvider;
+        self.dataSender = [[ELFeedbackDataSender alloc] initWithPresentingViewController:self];
     }
     return self;
 }
@@ -179,28 +180,17 @@ MFMailComposeViewControllerDelegate
     }
 }
 
-#pragma mark - Mail Compose View Controller
+#pragma mark - Data Sender
 
-- (void)presentMailComposeViewController
+- (void)feedbackDataSender:(ELFeedbackDataSender *)dataSender didFinishWithError:(NSError *)error
 {
-    MFMailComposeViewController *controller = [MFMailComposeViewController new];
-    controller.mailComposeDelegate = self;
-    [controller setSubject:[NSString stringWithFormat:@"[%@]", [[NSBundle mainBundle] objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleNameKey]]];
-    [controller setMessageBody:@"Feedback message body" isHTML:NO];
-    [self presentViewController:controller animated:YES completion:nil];
-}
-
-- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
-{
-    [controller dismissViewControllerAnimated:YES completion:^{
-        if (result == MFMailComposeResultSent) {
-            if ([self.delegate respondsToSelector:@selector(feedbackOptionsViewControllerDidFinish:)])
-                [self.delegate feedbackOptionsViewControllerDidFinish:self];
-            return;
-            
-        } else if (error != nil)
-            [[[UIAlertView alloc] initWithTitle:error.localizedDescription message:nil delegate:nil cancelButtonTitle:@"Закрыть" otherButtonTitles:nil] show]; 
-    }];
+    if (error == nil) {
+        if ([self.delegate respondsToSelector:@selector(feedbackOptionsViewControllerDidFinish:)])
+            [self.delegate feedbackOptionsViewControllerDidFinish:self];
+        return;
+        
+    } else
+        [[[UIAlertView alloc] initWithTitle:error.localizedDescription message:nil delegate:nil cancelButtonTitle:@"Закрыть" otherButtonTitles:nil] show];
 }
 
 #pragma mark - Actions
@@ -213,12 +203,7 @@ MFMailComposeViewControllerDelegate
 
 - (void)submit
 {
-    if (![MFMailComposeViewController canSendMail])
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:%@"]];
-    
-    else
-        [self presentMailComposeViewController];
-    
+    [self.dataSender sendDataWithDataProvider:self.dataProvider];
 }
 
 @end

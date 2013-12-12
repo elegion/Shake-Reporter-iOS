@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ELFeedbackDataItem.h"
 
 @interface ELFeedbackDataProvider : NSObject
 
