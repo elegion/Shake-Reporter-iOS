@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ELFeedbackHTTPProtocol.h"
 
 extern NSString * const ELFeedbackManagerDidReceiveShakeMotionNotification;
 
@@ -28,5 +29,8 @@ extern NSString * const ELFeedbackManagerDidReceiveShakeMotionNotification;
 - (void)start;
 
 - (void)stop;
+
+- (void)setURLRequestTrackingEnabledWithStartLoadingHandler:(ELFeedbackHTTPProtocolStartLoadingHandler)handler;
+- (void)setURLRequestTrackingDisabled;
 
 @end

@@ -10,13 +10,20 @@
 
 @interface ELViewController ()
 
+@property (nonatomic, strong) NSURLSessionDataTask *task;
+
 @end
 
 @implementation ELViewController
 
-- (void)viewDidLoad
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidLoad];
+    [super viewDidAppear:animated];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://ya.ru"]];
+    UIWebView *webView = [UIWebView new];
+    [self.view addSubview:webView];
+    [webView loadRequest:request];
 }
 
 @end

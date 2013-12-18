@@ -27,6 +27,8 @@ ELFeedbackOptionsViewControllerDelegate
 
 @implementation ELFeedbackManager
 
+#pragma mark - Initialization
+
 + (instancetype)sharedManager
 {
     static id instance;
@@ -36,6 +38,8 @@ ELFeedbackOptionsViewControllerDelegate
     });
     return instance;
 }
+
+#pragma mark - Start and Stop
 
 - (void)start
 {
@@ -48,6 +52,8 @@ ELFeedbackOptionsViewControllerDelegate
     ELSwapInstanceMethods([UIWindow class], @selector(motionEnded:withEvent:), @selector(EL_motionEnded:withEvent:));
     [self setShakeMotionNotificationObservationEnabled:NO];
 }
+
+#pragma mark - Shake Notification
 
 - (void)setShakeMotionNotificationObservationEnabled:(BOOL)enabled
 {
@@ -68,6 +74,20 @@ ELFeedbackOptionsViewControllerDelegate
 
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     [self presentOptionsViewControllerAnimated:YES];
+}
+
+#pragma mark - Configuration
+
+- (void)setURLRequestTrackingEnabledWithStartLoadingHandler:(ELFeedbackHTTPProtocolStartLoadingHandler)handler
+{
+    [ELFeedbackHTTPProtocol setTrackingEnabled:YES];
+    [ELFeedbackHTTPProtocol setStartLoadingHandler:handler];
+}
+
+- (void)setURLRequestTrackingDisabled
+{
+    [ELFeedbackHTTPProtocol setTrackingEnabled:NO];
+    [ELFeedbackHTTPProtocol setStartLoadingHandler:nil];
 }
 
 #pragma mark - Options View Controller

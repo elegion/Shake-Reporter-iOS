@@ -13,7 +13,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[ELFeedbackManager sharedManager] start];
+    ELFeedbackManager *feedbackManager = [ELFeedbackManager sharedManager];
+    [feedbackManager setURLRequestTrackingEnabledWithStartLoadingHandler:^(NSURLRequest *request) {
+        NSLog(@"Start loading %@", request.URL);
+    }];
+    [feedbackManager start];
 
     return YES;
 }
