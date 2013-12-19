@@ -38,6 +38,11 @@ static ELFeedbackHTTPProtocolStartLoadingHandler ELFeedbackHTTPProtocolStartLoad
         ELFeedbackHTTPProtocolStartLoadingBlock(self.request);
 }
 
+- (void)stopLoading
+{
+    // do nothing
+}
+
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request
 {
     return request;
