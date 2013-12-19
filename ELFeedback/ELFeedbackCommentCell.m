@@ -32,8 +32,12 @@
 
 - (void)initialize
 {
-    UITextView *textView = [[UITextView alloc] initWithFrame:self.contentView.bounds];
-    textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleWidth;
+    // text view
+    CGRect textViewFrame = self.contentView.bounds;
+    if ([self respondsToSelector:@selector(separatorInset)])
+        textViewFrame = UIEdgeInsetsInsetRect(textViewFrame, self.separatorInset);
+    UITextView *textView = [[UITextView alloc] initWithFrame:textViewFrame];
+    textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.contentView addSubview:textView];
     _textView = textView;
 }
