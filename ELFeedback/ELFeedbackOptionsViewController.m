@@ -154,7 +154,8 @@ UITextViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [scrollView endEditing:YES]; // dismiss keyboard on scroll
+    if (scrollView == self.tableView)
+        [scrollView endEditing:YES]; // dismiss keyboard on scroll
 }
 
 #pragma mark - Image Picker Controller
