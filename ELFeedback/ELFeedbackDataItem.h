@@ -13,7 +13,9 @@ typedef NSString *(^ELFeedbackDataItemValueBlock)();
 @interface ELFeedbackDataItem : NSObject
 
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *value;
+@property (nonatomic, copy) ELFeedbackDataItemValueBlock valueBlock;
+@property (nonatomic, copy) NSString *attachmentFilename;
+@property (nonatomic, copy) NSString *attachmentMimeType;
 
 - (instancetype)initWithTitle:(NSString *)title value:(NSString *)value;
 - (instancetype)initWithTitle:(NSString *)title valueBlock:(ELFeedbackDataItemValueBlock)valueBlock;

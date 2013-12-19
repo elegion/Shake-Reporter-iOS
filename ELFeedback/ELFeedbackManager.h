@@ -8,21 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "ELFeedbackHTTPProtocol.h"
+#import "ELFeedbackDataProvider.h"
 
 extern NSString * const ELFeedbackManagerDidReceiveShakeMotionNotification;
 
-@class ELFeedbackManager;
-@protocol ELFeedbackManagerDelegate <NSObject>
-
-@optional
-- (void)feedbackManager:(ELFeedbackManager *)manager;
-
-@end
-
-
 @interface ELFeedbackManager : NSObject
 
-@property (nonatomic, weak) id<ELFeedbackManagerDelegate> delegate;
+@property (nonatomic, strong, readonly) ELFeedbackDataProvider *dataProvider;
 
 + (instancetype)sharedManager;
 

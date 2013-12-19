@@ -15,6 +15,4 @@
 @property (nonatomic, copy) NSString *descriptionText;
 @property (nonatomic, strong) NSArray *items;
 
-- (instancetype)initWithSnapshotImage:(UIImage *)snapshotImage;
-
 @end

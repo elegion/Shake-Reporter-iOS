@@ -26,6 +26,7 @@
 		11EBDA0C1859DB340048DF7F /* ELFeedbackDataSender.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EBDA0B1859DB340048DF7F /* ELFeedbackDataSender.m */; };
 		11EBDA0F1859E5580048DF7F /* ELFeedbackCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EBDA0E1859E5580048DF7F /* ELFeedbackCommentCell.m */; };
 		11EBDA12185AF5930048DF7F /* ELFeedbackHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EBDA11185AF5930048DF7F /* ELFeedbackHTTPProtocol.m */; };
+		11F31E991863080000406178 /* console.log in Resources */ = {isa = PBXBuildFile; fileRef = 11F31E981863080000406178 /* console.log */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		11EBDA0E1859E5580048DF7F /* ELFeedbackCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELFeedbackCommentCell.m; sourceTree = "<group>"; };
 		11EBDA10185AF5930048DF7F /* ELFeedbackHTTPProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELFeedbackHTTPProtocol.h; sourceTree = "<group>"; };
 		11EBDA11185AF5930048DF7F /* ELFeedbackHTTPProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELFeedbackHTTPProtocol.m; sourceTree = "<group>"; };
+		11F31E981863080000406178 /* console.log */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = console.log; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		11AD01101858B90E0022C956 /* ELFeedbackApp */ = {
 			isa = PBXGroup;
 			children = (
+				11F31E95186307E500406178 /* Resources */,
 				11AD01191858B90F0022C956 /* ELAppDelegate.h */,
 				11AD011A1858B90F0022C956 /* ELAppDelegate.m */,
 				11AD011F1858B90F0022C956 /* ELViewController.h */,
@@ -172,6 +175,14 @@
 			path = ../../ELFeedback;
 			sourceTree = "<group>";
 		};
+		11F31E95186307E500406178 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				11F31E981863080000406178 /* console.log */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -227,6 +238,7 @@
 			files = (
 				11AD01231858B90F0022C956 /* Images.xcassets in Resources */,
 				11AD01151858B90E0022C956 /* InfoPlist.strings in Resources */,
+				11F31E991863080000406178 /* console.log in Resources */,
 				11AD011E1858B90F0022C956 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

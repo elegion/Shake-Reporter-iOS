@@ -16,15 +16,6 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithSnapshotImage:(UIImage *)snapshotImage
-{
-    self = [super init];
-    if (self) {
-        self.snapshotImage = snapshotImage;
-    }
-    return self;
-}
-
 - (NSArray *)items
 {
     if (_items == nil) {

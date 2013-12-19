@@ -1,0 +1,15 @@
+19.12.13 14:06:00,540 MDCrashReportTool[14680]: 14680:4722688|CrashReportCopierAFC.m:-[CrashReportCopierAFC copyAndProcessRemotePath:usingConnection:]| ERROR: Could not remove remote path at ./DiagnosticLogs/security.log.20131213T231100Z.gz
+19.12.13 14:06:00,550 MDCrashReportTool[14680]: 14680:4722688|CrashReportCopierAFC.m:-[CrashReportCopierAFC copyAndProcessRemotePath:usingConnection:]| ERROR: Could not remove remote path at ./DiagnosticLogs/security.log.20131214T221903Z.gz
+19.12.13 14:06:00,563 MDCrashReportTool[14680]: 14680:4722688|CrashReportCopierAFC.m:-[CrashReportCopierAFC copyAndProcessRemotePath:usingConnection:]| ERROR: Could not remove remote path at ./DiagnosticLogs/security.log.20131215T211309Z.gz
+19.12.13 14:06:00,577 MDCrashReportTool[14680]: 14680:4722688|CrashReportCopierAFC.m:-[CrashReportCopierAFC copyAndProcessRemotePath:usingConnection:]| ERROR: Could not remove remote path at ./DiagnosticLogs/security.log.20131216T214726Z.gz
+19.12.13 14:06:00,598 MDCrashReportTool[14680]: 14680:4722688|CrashReportCopierAFC.m:-[CrashReportCopierAFC copyAndProcessRemotePath:usingConnection:]| ERROR: Could not remove remote path at ./DiagnosticLogs/security.log.20131217T204122Z
+19.12.13 14:06:00,611 MDCrashReportTool[14680]: 14680:4722688|CrashReportCopierAFC.m:-[CrashReportCopierAFC copyAndProcessRemotePath:usingConnection:]| ERROR: Could not remove remote path at ./DiagnosticLogs/security.log.20131218T222809Z
+19.12.13 14:10:31,345 iTunes[202]: _send_message (thread 0x11c122000): Could not securely send message size 406: SSL_ERROR_SYSCALL errno (Broken pipe).
+19.12.13 14:10:31,347 iTunes[202]: AMDeviceStopSession (thread 0x11c122000): Could not stop session with device 41: kAMDSendMessageError
+19.12.13 14:11:31,344 iTunes[202]: _send_message (thread 0x11c122000): Could not securely send message size 406: SSL_ERROR_SYSCALL errno (Broken pipe).
+19.12.13 14:11:31,345 iTunes[202]: AMDeviceStopSession (thread 0x11c122000): Could not stop session with device 41: kAMDSendMessageError
+19.12.13 14:14:31,852 LKDCHelper[14708]: Starting (uid=501)
+19.12.13 14:14:39,056 com.apple.SecurityServer[14]: Session 100196 created
+19.12.13 14:14:39,107 com.apple.SecurityServer[14]: Killing auth hosts
+19.12.13 14:14:39,107 com.apple.SecurityServer[14]: Session 100193 destroyed
+19.12.13 14:14:39,667 Console[14712]: setPresentationOptions called with NSApplicationPresentationFullScreen when there is no visible fullscreen window; this call will be ignored.

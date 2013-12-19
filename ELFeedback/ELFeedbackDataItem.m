@@ -10,20 +10,15 @@
 
 @interface ELFeedbackDataItem ()
 
-@property (nonatomic, copy) ELFeedbackDataItemValueBlock valueBlock;
-
 @end
 
 @implementation ELFeedbackDataItem
 
 - (instancetype)initWithTitle:(NSString *)title value:(NSString *)value
 {
-    self = [super init];
-    if (self) {
-        self.title = title;
-        self.value = value;
-    }
-    return self;
+    return [self initWithTitle:title valueBlock:^NSString *{
+        return value;
+    }];
 }
 
 - (instancetype)initWithTitle:(NSString *)title valueBlock:(ELFeedbackDataItemValueBlock)valueBlock
@@ -34,14 +29,6 @@
         self.valueBlock = valueBlock;
     }
     return self;
-}
-
-- (NSString *)value
-{
-    if (self.valueBlock != nil)
-        return self.valueBlock();
-    else
-        return _value;
 }
 
 @end

@@ -21,6 +21,7 @@ NSString * const ELFeedbackManagerDidReceiveShakeMotionNotification = @"ELFeedba
 ELFeedbackOptionsViewControllerDelegate
 >
 
+@property (nonatomic, strong) ELFeedbackDataProvider *dataProvider;
 @property (nonatomic, strong) ELFeedbackOptionsViewController *optionsViewController;
 
 @end
@@ -37,6 +38,14 @@ ELFeedbackOptionsViewControllerDelegate
         instance = [self.class new];
     });
     return instance;
+}
+
+- (ELFeedbackDataProvider *)dataProvider
+{
+    if (_dataProvider == nil)
+        _dataProvider = [ELFeedbackDataProvider new];
+    
+    return _dataProvider;
 }
 
 #pragma mark - Start and Stop
@@ -94,8 +103,8 @@ ELFeedbackOptionsViewControllerDelegate
 
 - (void)presentOptionsViewControllerAnimated:(BOOL)animated
 {
-    ELFeedbackDataProvider *dataProvider = [[ELFeedbackDataProvider alloc] initWithSnapshotImage:[[UIApplication sharedApplication].keyWindow ELSnapshot]];
-    self.optionsViewController = [[ELFeedbackOptionsViewController alloc] initWithDataProvider:dataProvider];
+    self.dataProvider.snapshotImage = [[UIApplication sharedApplication].keyWindow ELSnapshot];
+    self.optionsViewController = [[ELFeedbackOptionsViewController alloc] initWithDataProvider:self.dataProvider];
     self.optionsViewController.delegate = self;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.optionsViewController];
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:navigationController animated:animated completion:nil];

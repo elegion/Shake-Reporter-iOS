@@ -140,7 +140,7 @@ UITextViewDelegate
     
     ELFeedbackDataItem *item = self.dataProvider.items[indexPath.row];
     cell.textLabel.text = item.title;
-    cell.detailTextLabel.text = item.value;
+    cell.detailTextLabel.text = item.valueBlock ? item.valueBlock() : nil;
     
     return cell;
 }
