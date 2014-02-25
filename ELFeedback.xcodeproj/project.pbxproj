@@ -11,13 +11,20 @@
 		118BFF4B1858AD0600F6A858 /* ELFeedback.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 118BFF4A1858AD0600F6A858 /* ELFeedback.h */; };
 		118BFF541858AD0600F6A858 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 118BFF531858AD0600F6A858 /* XCTest.framework */; };
 		118BFF551858AD0600F6A858 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 118BFF451858AD0600F6A858 /* Foundation.framework */; };
-		118BFF571858AD0600F6A858 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 118BFF561858AD0600F6A858 /* UIKit.framework */; };
 		118BFF5A1858AD0600F6A858 /* libELFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 118BFF421858AD0600F6A858 /* libELFeedback.a */; };
 		118BFF601858AD0600F6A858 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 118BFF5E1858AD0600F6A858 /* InfoPlist.strings */; };
 		118BFF621858AD0600F6A858 /* ELFeedbackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 118BFF611858AD0600F6A858 /* ELFeedbackTests.m */; };
 		118BFF6E1858AD2E00F6A858 /* ELFeedbackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 118BFF6D1858AD2E00F6A858 /* ELFeedbackManager.m */; };
 		118BFF781858B2BC00F6A858 /* ELRuntimeClassModifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 118BFF771858B2BC00F6A858 /* ELRuntimeClassModifications.m */; };
 		118BFF7B1858B43B00F6A858 /* UIWindow+ELMotionEnded.m in Sources */ = {isa = PBXBuildFile; fileRef = 118BFF7A1858B43B00F6A858 /* UIWindow+ELMotionEnded.m */; };
+		AAE3229A18BD15E300170ACF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE3229918BD15E300170ACF /* UIKit.framework */; };
+		AAE322A918BD163000170ACF /* ELFeedbackDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE3229D18BD163000170ACF /* ELFeedbackDataProvider.m */; };
+		AAE322AA18BD163000170ACF /* ELFeedbackCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE3229F18BD163000170ACF /* ELFeedbackCommentCell.m */; };
+		AAE322AB18BD163000170ACF /* ELFeedbackDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE322A118BD163000170ACF /* ELFeedbackDataItem.m */; };
+		AAE322AC18BD163000170ACF /* ELFeedbackDataSender.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE322A318BD163000170ACF /* ELFeedbackDataSender.m */; };
+		AAE322AD18BD163000170ACF /* ELFeedbackHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE322A518BD163000170ACF /* ELFeedbackHTTPProtocol.m */; };
+		AAE322AE18BD163000170ACF /* ELFeedbackOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE322A718BD163000170ACF /* ELFeedbackOptionsViewController.m */; };
+		AAE322AF18BD163000170ACF /* UIView+ELSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE322A818BD163000170ACF /* UIView+ELSnapshot.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +57,6 @@
 		118BFF4A1858AD0600F6A858 /* ELFeedback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ELFeedback.h; sourceTree = "<group>"; };
 		118BFF521858AD0600F6A858 /* ELFeedbackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ELFeedbackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		118BFF531858AD0600F6A858 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		118BFF561858AD0600F6A858 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		118BFF5D1858AD0600F6A858 /* ELFeedbackTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ELFeedbackTests-Info.plist"; sourceTree = "<group>"; };
 		118BFF5F1858AD0600F6A858 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		118BFF611858AD0600F6A858 /* ELFeedbackTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ELFeedbackTests.m; sourceTree = "<group>"; };
@@ -60,6 +66,21 @@
 		118BFF771858B2BC00F6A858 /* ELRuntimeClassModifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELRuntimeClassModifications.m; sourceTree = "<group>"; };
 		118BFF791858B43B00F6A858 /* UIWindow+ELMotionEnded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+ELMotionEnded.h"; sourceTree = "<group>"; };
 		118BFF7A1858B43B00F6A858 /* UIWindow+ELMotionEnded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+ELMotionEnded.m"; sourceTree = "<group>"; };
+		AAE3229918BD15E300170ACF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AAE3229B18BD163000170ACF /* UIView+ELSnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ELSnapshot.h"; sourceTree = "<group>"; };
+		AAE3229C18BD163000170ACF /* ELFeedbackDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELFeedbackDataProvider.h; sourceTree = "<group>"; };
+		AAE3229D18BD163000170ACF /* ELFeedbackDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELFeedbackDataProvider.m; sourceTree = "<group>"; };
+		AAE3229E18BD163000170ACF /* ELFeedbackCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELFeedbackCommentCell.h; sourceTree = "<group>"; };
+		AAE3229F18BD163000170ACF /* ELFeedbackCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELFeedbackCommentCell.m; sourceTree = "<group>"; };
+		AAE322A018BD163000170ACF /* ELFeedbackDataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELFeedbackDataItem.h; sourceTree = "<group>"; };
+		AAE322A118BD163000170ACF /* ELFeedbackDataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELFeedbackDataItem.m; sourceTree = "<group>"; };
+		AAE322A218BD163000170ACF /* ELFeedbackDataSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELFeedbackDataSender.h; sourceTree = "<group>"; };
+		AAE322A318BD163000170ACF /* ELFeedbackDataSender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELFeedbackDataSender.m; sourceTree = "<group>"; };
+		AAE322A418BD163000170ACF /* ELFeedbackHTTPProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELFeedbackHTTPProtocol.h; sourceTree = "<group>"; };
+		AAE322A518BD163000170ACF /* ELFeedbackHTTPProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELFeedbackHTTPProtocol.m; sourceTree = "<group>"; };
+		AAE322A618BD163000170ACF /* ELFeedbackOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELFeedbackOptionsViewController.h; sourceTree = "<group>"; };
+		AAE322A718BD163000170ACF /* ELFeedbackOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELFeedbackOptionsViewController.m; sourceTree = "<group>"; };
+		AAE322A818BD163000170ACF /* UIView+ELSnapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ELSnapshot.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAE3229A18BD15E300170ACF /* UIKit.framework in Frameworks */,
 				118BFF461858AD0600F6A858 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,7 +98,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				118BFF541858AD0600F6A858 /* XCTest.framework in Frameworks */,
-				118BFF571858AD0600F6A858 /* UIKit.framework in Frameworks */,
 				118BFF551858AD0600F6A858 /* Foundation.framework in Frameworks */,
 				118BFF5A1858AD0600F6A858 /* libELFeedback.a in Frameworks */,
 			);
@@ -107,9 +128,9 @@
 		118BFF441858AD0600F6A858 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAE3229918BD15E300170ACF /* UIKit.framework */,
 				118BFF451858AD0600F6A858 /* Foundation.framework */,
 				118BFF531858AD0600F6A858 /* XCTest.framework */,
-				118BFF561858AD0600F6A858 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -117,6 +138,17 @@
 		118BFF471858AD0600F6A858 /* ELFeedback */ = {
 			isa = PBXGroup;
 			children = (
+				AAE322B018BD163600170ACF /* UI */,
+				AAE3229B18BD163000170ACF /* UIView+ELSnapshot.h */,
+				AAE3229C18BD163000170ACF /* ELFeedbackDataProvider.h */,
+				AAE3229D18BD163000170ACF /* ELFeedbackDataProvider.m */,
+				AAE322A018BD163000170ACF /* ELFeedbackDataItem.h */,
+				AAE322A118BD163000170ACF /* ELFeedbackDataItem.m */,
+				AAE322A218BD163000170ACF /* ELFeedbackDataSender.h */,
+				AAE322A318BD163000170ACF /* ELFeedbackDataSender.m */,
+				AAE322A418BD163000170ACF /* ELFeedbackHTTPProtocol.h */,
+				AAE322A518BD163000170ACF /* ELFeedbackHTTPProtocol.m */,
+				AAE322A818BD163000170ACF /* UIView+ELSnapshot.m */,
 				118BFF4A1858AD0600F6A858 /* ELFeedback.h */,
 				118BFF6C1858AD2E00F6A858 /* ELFeedbackManager.h */,
 				118BFF6D1858AD2E00F6A858 /* ELFeedbackManager.m */,
@@ -153,6 +185,17 @@
 				118BFF5E1858AD0600F6A858 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AAE322B018BD163600170ACF /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				AAE3229E18BD163000170ACF /* ELFeedbackCommentCell.h */,
+				AAE3229F18BD163000170ACF /* ELFeedbackCommentCell.m */,
+				AAE322A618BD163000170ACF /* ELFeedbackOptionsViewController.h */,
+				AAE322A718BD163000170ACF /* ELFeedbackOptionsViewController.m */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,8 +279,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAE322AB18BD163000170ACF /* ELFeedbackDataItem.m in Sources */,
 				118BFF781858B2BC00F6A858 /* ELRuntimeClassModifications.m in Sources */,
+				AAE322AA18BD163000170ACF /* ELFeedbackCommentCell.m in Sources */,
+				AAE322AD18BD163000170ACF /* ELFeedbackHTTPProtocol.m in Sources */,
 				118BFF6E1858AD2E00F6A858 /* ELFeedbackManager.m in Sources */,
+				AAE322AC18BD163000170ACF /* ELFeedbackDataSender.m in Sources */,
+				AAE322AE18BD163000170ACF /* ELFeedbackOptionsViewController.m in Sources */,
+				AAE322AF18BD163000170ACF /* UIView+ELSnapshot.m in Sources */,
+				AAE322A918BD163000170ACF /* ELFeedbackDataProvider.m in Sources */,
 				118BFF7B1858B43B00F6A858 /* UIWindow+ELMotionEnded.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

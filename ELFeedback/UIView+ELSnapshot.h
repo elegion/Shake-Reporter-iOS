@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 e-legion. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface UIView (ELSnapshot)
 
 - (UIImage *)ELSnapshot;
