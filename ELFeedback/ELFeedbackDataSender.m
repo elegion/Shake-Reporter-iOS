@@ -44,9 +44,18 @@ MFMailComposeViewControllerDelegate
         ELFeedbackDataItem *item = obj;
         NSString *value = item.valueBlock ? item.valueBlock() : nil;
         if (item.attachmentFilename != nil && item.attachmentMimeType != nil) {
-            [controller addAttachmentData:[value dataUsingEncoding:NSUTF8StringEncoding] mimeType:item.attachmentMimeType fileName:item.attachmentFilename];
+            NSData* attachmentData;
+            if (item.attachmentDataBlock) {
+                attachmentData = item.attachmentDataBlock();
+            } else {
+                attachmentData = [value dataUsingEncoding:NSUTF8StringEncoding];
+            }
+            
+            if (attachmentData) {
+                [controller addAttachmentData:attachmentData mimeType:item.attachmentMimeType fileName:item.attachmentFilename];
+            }
         } else
-            [itemsHTML appendFormat:@"<dt><bold>%@</bold></dt><dd>%@</dd><dl>", item.title, value];
+            [itemsHTML appendFormat:@"%@: <b>%@</b>", item.title, value];
     }];
     [controller setMessageBody:[NSString stringWithFormat:@"%@<br><br><dl>%@</dl>", dataProvider.descriptionText ?: @"", itemsHTML] isHTML:YES];
     [controller addAttachmentData:UIImagePNGRepresentation(dataProvider.snapshotImage) mimeType:@"image/png" fileName:@"screenshot.png"];

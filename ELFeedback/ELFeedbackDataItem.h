@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 
 typedef NSString *(^ELFeedbackDataItemValueBlock)();
+typedef NSData *(^ELDataBlock)();
 
 @interface ELFeedbackDataItem : NSObject
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) ELFeedbackDataItemValueBlock valueBlock;
+@property (nonatomic, copy) ELDataBlock attachmentDataBlock;
 @property (nonatomic, copy) NSString *attachmentFilename;
 @property (nonatomic, copy) NSString *attachmentMimeType;
 

@@ -14,5 +14,6 @@
 @property (nonatomic, strong) UIImage *snapshotImage;
 @property (nonatomic, copy) NSString *descriptionText;
 @property (nonatomic, strong) NSArray *items;
+@property (nonatomic, copy) ELDataBlock logDataBlock;
 
 @end

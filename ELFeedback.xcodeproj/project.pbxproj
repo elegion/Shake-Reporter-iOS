@@ -17,6 +17,7 @@
 		118BFF6E1858AD2E00F6A858 /* ELFeedbackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 118BFF6D1858AD2E00F6A858 /* ELFeedbackManager.m */; };
 		118BFF781858B2BC00F6A858 /* ELRuntimeClassModifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 118BFF771858B2BC00F6A858 /* ELRuntimeClassModifications.m */; };
 		118BFF7B1858B43B00F6A858 /* UIWindow+ELMotionEnded.m in Sources */ = {isa = PBXBuildFile; fileRef = 118BFF7A1858B43B00F6A858 /* UIWindow+ELMotionEnded.m */; };
+		AABAB84E18BDE24A000CFDD4 /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AABAB84D18BDE24A000CFDD4 /* libz.1.dylib */; };
 		AAE3229A18BD15E300170ACF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE3229918BD15E300170ACF /* UIKit.framework */; };
 		AAE322A918BD163000170ACF /* ELFeedbackDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE3229D18BD163000170ACF /* ELFeedbackDataProvider.m */; };
 		AAE322AA18BD163000170ACF /* ELFeedbackCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE3229F18BD163000170ACF /* ELFeedbackCommentCell.m */; };
@@ -25,6 +26,7 @@
 		AAE322AD18BD163000170ACF /* ELFeedbackHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE322A518BD163000170ACF /* ELFeedbackHTTPProtocol.m */; };
 		AAE322AE18BD163000170ACF /* ELFeedbackOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE322A718BD163000170ACF /* ELFeedbackOptionsViewController.m */; };
 		AAE322AF18BD163000170ACF /* UIView+ELSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE322A818BD163000170ACF /* UIView+ELSnapshot.m */; };
+		AAE322B418BD18CE00170ACF /* ELGzipUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE322B318BD18CE00170ACF /* ELGzipUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,7 @@
 		118BFF771858B2BC00F6A858 /* ELRuntimeClassModifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELRuntimeClassModifications.m; sourceTree = "<group>"; };
 		118BFF791858B43B00F6A858 /* UIWindow+ELMotionEnded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+ELMotionEnded.h"; sourceTree = "<group>"; };
 		118BFF7A1858B43B00F6A858 /* UIWindow+ELMotionEnded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+ELMotionEnded.m"; sourceTree = "<group>"; };
+		AABAB84D18BDE24A000CFDD4 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = usr/lib/libz.1.dylib; sourceTree = SDKROOT; };
 		AAE3229918BD15E300170ACF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AAE3229B18BD163000170ACF /* UIView+ELSnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ELSnapshot.h"; sourceTree = "<group>"; };
 		AAE3229C18BD163000170ACF /* ELFeedbackDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELFeedbackDataProvider.h; sourceTree = "<group>"; };
@@ -81,6 +84,8 @@
 		AAE322A618BD163000170ACF /* ELFeedbackOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELFeedbackOptionsViewController.h; sourceTree = "<group>"; };
 		AAE322A718BD163000170ACF /* ELFeedbackOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELFeedbackOptionsViewController.m; sourceTree = "<group>"; };
 		AAE322A818BD163000170ACF /* UIView+ELSnapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ELSnapshot.m"; sourceTree = "<group>"; };
+		AAE322B218BD18CE00170ACF /* ELGzipUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELGzipUtil.h; sourceTree = "<group>"; };
+		AAE322B318BD18CE00170ACF /* ELGzipUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELGzipUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AABAB84E18BDE24A000CFDD4 /* libz.1.dylib in Frameworks */,
 				AAE3229A18BD15E300170ACF /* UIKit.framework in Frameworks */,
 				118BFF461858AD0600F6A858 /* Foundation.framework in Frameworks */,
 			);
@@ -128,6 +134,7 @@
 		118BFF441858AD0600F6A858 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AABAB84D18BDE24A000CFDD4 /* libz.1.dylib */,
 				AAE3229918BD15E300170ACF /* UIKit.framework */,
 				118BFF451858AD0600F6A858 /* Foundation.framework */,
 				118BFF531858AD0600F6A858 /* XCTest.framework */,
@@ -138,12 +145,11 @@
 		118BFF471858AD0600F6A858 /* ELFeedback */ = {
 			isa = PBXGroup;
 			children = (
+				AAE322B118BD189400170ACF /* Data */,
 				AAE322B018BD163600170ACF /* UI */,
 				AAE3229B18BD163000170ACF /* UIView+ELSnapshot.h */,
 				AAE3229C18BD163000170ACF /* ELFeedbackDataProvider.h */,
 				AAE3229D18BD163000170ACF /* ELFeedbackDataProvider.m */,
-				AAE322A018BD163000170ACF /* ELFeedbackDataItem.h */,
-				AAE322A118BD163000170ACF /* ELFeedbackDataItem.m */,
 				AAE322A218BD163000170ACF /* ELFeedbackDataSender.h */,
 				AAE322A318BD163000170ACF /* ELFeedbackDataSender.m */,
 				AAE322A418BD163000170ACF /* ELFeedbackHTTPProtocol.h */,
@@ -196,6 +202,17 @@
 				AAE322A718BD163000170ACF /* ELFeedbackOptionsViewController.m */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		AAE322B118BD189400170ACF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				AAE322A018BD163000170ACF /* ELFeedbackDataItem.h */,
+				AAE322A118BD163000170ACF /* ELFeedbackDataItem.m */,
+				AAE322B218BD18CE00170ACF /* ELGzipUtil.h */,
+				AAE322B318BD18CE00170ACF /* ELGzipUtil.m */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +299,7 @@
 				AAE322AB18BD163000170ACF /* ELFeedbackDataItem.m in Sources */,
 				118BFF781858B2BC00F6A858 /* ELRuntimeClassModifications.m in Sources */,
 				AAE322AA18BD163000170ACF /* ELFeedbackCommentCell.m in Sources */,
+				AAE322B418BD18CE00170ACF /* ELGzipUtil.m in Sources */,
 				AAE322AD18BD163000170ACF /* ELFeedbackHTTPProtocol.m in Sources */,
 				118BFF6E1858AD2E00F6A858 /* ELFeedbackManager.m in Sources */,
 				AAE322AC18BD163000170ACF /* ELFeedbackDataSender.m in Sources */,

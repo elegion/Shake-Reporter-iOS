@@ -7,6 +7,7 @@
 //
 
 #import "ELFeedbackDataProvider.h"
+#import "ELGzipUtil.h"
 
 @interface ELFeedbackDataProvider ()
 
@@ -19,7 +20,7 @@
 - (NSArray *)items
 {
     if (_items == nil) {
-        _items = @[[[ELFeedbackDataItem alloc] initWithTitle:(__bridge NSString *)kCFBundleVersionKey
+        NSMutableArray *items = @[[[ELFeedbackDataItem alloc] initWithTitle:(__bridge NSString *)kCFBundleVersionKey
                                                        value:[[NSBundle mainBundle] objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleVersionKey]] ?: @"",
                    [[ELFeedbackDataItem alloc] initWithTitle:@"CFBundleShortVersionString"
                                                        value:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] ?: @""],
@@ -33,7 +34,20 @@
                                                            dateFormatter.dateFormat = @"dd.MM.yy, HH:mm:ss z";
                                                            return [dateFormatter stringFromDate:[NSDate date]];
                                                        }]
-                   ];
+                   ].mutableCopy;
+
+        if (self.logDataBlock) {
+            ELFeedbackDataItem *logItem = [[ELFeedbackDataItem alloc] init];
+            logItem.title = @"Logs";
+            logItem.attachmentFilename = @"logs.zip";
+            logItem.attachmentMimeType = @"application/zip";
+            logItem.attachmentDataBlock = ^ {
+                NSData* logData = self.logDataBlock();
+                return logData ? [ELGzipUtil gzipData:logData] : nil;
+            };
+            [items addObject:logItem];
+        }
+        _items = items;
     }
     
     return _items;
