@@ -55,7 +55,7 @@ MFMailComposeViewControllerDelegate
                 [controller addAttachmentData:attachmentData mimeType:item.attachmentMimeType fileName:item.attachmentFilename];
             }
         } else
-            [itemsHTML appendFormat:@"%@: <b>%@</b>", item.title, value];
+            [itemsHTML appendFormat:@"%@: <b>%@ </b>", item.title, value];
     }];
     [controller setMessageBody:[NSString stringWithFormat:@"%@<br><br><dl>%@</dl>", dataProvider.descriptionText ?: @"", itemsHTML] isHTML:YES];
     [controller addAttachmentData:UIImagePNGRepresentation(dataProvider.snapshotImage) mimeType:@"image/png" fileName:@"screenshot.png"];
