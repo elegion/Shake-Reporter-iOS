@@ -27,6 +27,8 @@
 		11EBDA0F1859E5580048DF7F /* ELFeedbackCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EBDA0E1859E5580048DF7F /* ELFeedbackCommentCell.m */; };
 		11EBDA12185AF5930048DF7F /* ELFeedbackHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 11EBDA11185AF5930048DF7F /* ELFeedbackHTTPProtocol.m */; };
 		11F31E991863080000406178 /* console.log in Resources */ = {isa = PBXBuildFile; fileRef = 11F31E981863080000406178 /* console.log */; };
+		3F18F76A18FE8BDF007D65FB /* ELGzipUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F18F76918FE8BDF007D65FB /* ELGzipUtil.m */; };
+		3F18F76C18FE8BFC007D65FB /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F18F76B18FE8BFC007D65FB /* libz.1.2.5.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +69,9 @@
 		11EBDA10185AF5930048DF7F /* ELFeedbackHTTPProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELFeedbackHTTPProtocol.h; sourceTree = "<group>"; };
 		11EBDA11185AF5930048DF7F /* ELFeedbackHTTPProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELFeedbackHTTPProtocol.m; sourceTree = "<group>"; };
 		11F31E981863080000406178 /* console.log */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = console.log; sourceTree = "<group>"; };
+		3F18F76818FE8BDF007D65FB /* ELGzipUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELGzipUtil.h; sourceTree = "<group>"; };
+		3F18F76918FE8BDF007D65FB /* ELGzipUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELGzipUtil.m; sourceTree = "<group>"; };
+		3F18F76B18FE8BFC007D65FB /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F18F76C18FE8BFC007D65FB /* libz.1.2.5.dylib in Frameworks */,
 				11AD010D1858B90E0022C956 /* CoreGraphics.framework in Frameworks */,
 				11AD010F1858B90E0022C956 /* UIKit.framework in Frameworks */,
 				11AD010B1858B90E0022C956 /* Foundation.framework in Frameworks */,
@@ -104,6 +110,7 @@
 		11AD01091858B90E0022C956 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3F18F76B18FE8BFC007D65FB /* libz.1.2.5.dylib */,
 				11AD010A1858B90E0022C956 /* Foundation.framework */,
 				11AD010C1858B90E0022C956 /* CoreGraphics.framework */,
 				11AD010E1858B90E0022C956 /* UIKit.framework */,
@@ -150,6 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				11AD014D1858BBA80022C956 /* ELFeedback.h */,
+				3F18F76818FE8BDF007D65FB /* ELGzipUtil.h */,
+				3F18F76918FE8BDF007D65FB /* ELGzipUtil.m */,
 				11EBDA0D1859E5580048DF7F /* ELFeedbackCommentCell.h */,
 				11EBDA0E1859E5580048DF7F /* ELFeedbackCommentCell.m */,
 				11EBDA071859C3680048DF7F /* ELFeedbackDataItem.h */,
@@ -210,7 +219,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = EL;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "e-legion";
 			};
 			buildConfigurationList = 11AD01021858B90E0022C956 /* Build configuration list for PBXProject "ELFeedbackApp" */;
@@ -256,6 +265,7 @@
 				11EBDA0F1859E5580048DF7F /* ELFeedbackCommentCell.m in Sources */,
 				11EBDA12185AF5930048DF7F /* ELFeedbackHTTPProtocol.m in Sources */,
 				11EBDA0C1859DB340048DF7F /* ELFeedbackDataSender.m in Sources */,
+				3F18F76A18FE8BDF007D65FB /* ELGzipUtil.m in Sources */,
 				11AD01211858B90F0022C956 /* ELViewController.m in Sources */,
 				11AD01171858B90F0022C956 /* main.m in Sources */,
 				11EBDA061859C1580048DF7F /* ELFeedbackDataProvider.m in Sources */,
@@ -292,7 +302,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -331,7 +340,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
