@@ -58,6 +58,14 @@ MFMailComposeViewControllerDelegate
             [itemsHTML appendFormat:@"%@: <b>%@ </b>", item.title, value];
     }];
     [controller setMessageBody:[NSString stringWithFormat:@"%@<br><br><dl>%@</dl>", dataProvider.descriptionText ?: @"", itemsHTML] isHTML:YES];
+    
+    [controller addAttachmentData:[[NSString stringWithFormat:@"%@", dataProvider.subviews] dataUsingEncoding:NSUTF8StringEncoding]
+                         mimeType:@"text/json"
+                         fileName:@"subviews.json"];
+    [controller addAttachmentData:[[NSString stringWithFormat:@"%@", dataProvider.viewControllerInfo] dataUsingEncoding:NSUTF8StringEncoding]
+                         mimeType:@"text/json"
+                         fileName:@"viewControllerInfo.json"];
+    
     [controller addAttachmentData:UIImagePNGRepresentation(dataProvider.snapshotImage) mimeType:@"image/png" fileName:@"screenshot.png"];
     
     [self.presentingController presentViewController:controller animated:YES completion:nil];
