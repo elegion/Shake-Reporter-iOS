@@ -11,19 +11,22 @@
 
 @implementation UIViewController (stack)
 
-+ (UIViewController*)topViewController {
++ (UIViewController*)topViewController
+{
     return [self topViewControllerWithRootViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
 }
 
 
-+ (NSArray*)navigationStackForViewController {
++ (NSArray*)navigationStackForViewController
+{
     return [self getViewControllersStackForRootViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
 }
 
 
 
 
-+ (UIViewController*)topViewControllerWithRootViewController:(UIViewController*)rootViewController {
++ (UIViewController*)topViewControllerWithRootViewController:(UIViewController*)rootViewController
+{
     if ([rootViewController isKindOfClass:[UITabBarController class]]) {
         UITabBarController* tabBarController = (UITabBarController*)rootViewController;
         return [self topViewControllerWithRootViewController:tabBarController.selectedViewController];
@@ -39,15 +42,11 @@
 }
 
 
-+ (NSArray*)getViewControllersStackForRootViewController:(UIViewController*)rootViewController {
-    if ([rootViewController isKindOfClass:[UINavigationController class]]) {
-        return [(UINavigationController*)rootViewController viewControllers];
-    } else if (rootViewController.presentedViewController) {
-        UIViewController* presentedViewController = rootViewController.presentedViewController;
-        return [self getViewControllersStackForRootViewController:presentedViewController];
-    } else {
-        return [NSArray array];
-    }
++ (NSArray*)getViewControllersStackForRootViewController:(UIViewController*)rootViewController
+{
+    return [self topViewController].navigationController ?
+                [[self topViewController].navigationController viewControllers]:
+                [NSArray array];
 }
 
 
