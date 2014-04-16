@@ -15,5 +15,7 @@
 @property (nonatomic, copy) NSString *descriptionText;
 @property (nonatomic, strong) NSArray *items;
 @property (nonatomic, copy) ELDataBlock logDataBlock;
+@property (nonatomic, strong) NSDictionary *subviews;
+@property (nonatomic, strong) NSDictionary *viewControllerInfo;
 
 @end

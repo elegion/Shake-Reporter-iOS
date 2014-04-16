@@ -10,4 +10,8 @@
 
 @interface UIViewController (stack)
 
++ (UIViewController*) topViewController;
+
++ (NSArray*)navigationStackForViewController;
+
 @end
