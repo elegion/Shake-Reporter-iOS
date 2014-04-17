@@ -7,6 +7,7 @@
 //
 
 #import "ELFeedbackManager.h"
+#import "ELViewDataGetter.h"
 #import "ELRuntimeClassModifications.h"
 #import "UIWindow+ELMotionEnded.h"
 #import <UIKit/UIKit.h>
@@ -104,6 +105,8 @@ ELFeedbackOptionsViewControllerDelegate
 - (void)presentOptionsViewControllerAnimated:(BOOL)animated
 {
     self.dataProvider.snapshotImage = [[UIApplication sharedApplication].keyWindow ELSnapshot];
+    self.dataProvider.subviews = [ELViewDataGetter el_getSubviews];
+    self.dataProvider.viewControllerInfo = [ELViewDataGetter el_getMainInfoAboutViewController];
     self.optionsViewController = [[ELFeedbackOptionsViewController alloc] initWithDataProvider:self.dataProvider];
     self.optionsViewController.delegate = self;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.optionsViewController];
