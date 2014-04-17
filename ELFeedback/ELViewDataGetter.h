@@ -11,9 +11,9 @@
 @interface ELViewDataGetter : NSObject
 
 
-+ (NSDictionary *)getMainInfoAboutViewController;
++ (NSDictionary *)el_getMainInfoAboutViewController;
 
-+ (NSDictionary *)getSubviews;
++ (NSDictionary *)el_getSubviews;
 
 
 @end

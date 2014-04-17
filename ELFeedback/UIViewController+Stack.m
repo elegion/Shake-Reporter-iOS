@@ -9,7 +9,7 @@
 #import "UIViewController+stack.h"
 
 
-@implementation UIViewController (stack)
+@implementation UIViewController (Stack)
 
 + (UIViewController*)topViewController
 {

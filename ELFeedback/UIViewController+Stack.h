@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIViewController (stack)
+@interface UIViewController (Stack)
 
 + (UIViewController*) topViewController;
 

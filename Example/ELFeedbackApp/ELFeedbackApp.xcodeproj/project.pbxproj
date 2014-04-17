@@ -30,7 +30,7 @@
 		3F18F76A18FE8BDF007D65FB /* ELGzipUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F18F76918FE8BDF007D65FB /* ELGzipUtil.m */; };
 		3F18F76C18FE8BFC007D65FB /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F18F76B18FE8BFC007D65FB /* libz.1.2.5.dylib */; };
 		3F18F76F18FE9E50007D65FB /* ELViewDataGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F18F76E18FE9E50007D65FB /* ELViewDataGetter.m */; };
-		3F18F77218FEA3FE007D65FB /* UIViewController+stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F18F77118FEA3FE007D65FB /* UIViewController+stack.m */; };
+		3F18F77218FEA3FE007D65FB /* UIViewController+Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F18F77118FEA3FE007D65FB /* UIViewController+Stack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,8 +76,8 @@
 		3F18F76B18FE8BFC007D65FB /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		3F18F76D18FE9E50007D65FB /* ELViewDataGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELViewDataGetter.h; sourceTree = "<group>"; };
 		3F18F76E18FE9E50007D65FB /* ELViewDataGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELViewDataGetter.m; sourceTree = "<group>"; };
-		3F18F77018FEA3FE007D65FB /* UIViewController+stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+stack.h"; sourceTree = "<group>"; };
-		3F18F77118FEA3FE007D65FB /* UIViewController+stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+stack.m"; sourceTree = "<group>"; };
+		3F18F77018FEA3FE007D65FB /* UIViewController+Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Stack.h"; sourceTree = "<group>"; };
+		3F18F77118FEA3FE007D65FB /* UIViewController+Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Stack.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,8 +187,8 @@
 				11EBDA021859AD990048DF7F /* UIView+ELSnapshot.m */,
 				11AD01521858BBA80022C956 /* UIWindow+ELMotionEnded.h */,
 				11AD01531858BBA80022C956 /* UIWindow+ELMotionEnded.m */,
-				3F18F77018FEA3FE007D65FB /* UIViewController+stack.h */,
-				3F18F77118FEA3FE007D65FB /* UIViewController+stack.m */,
+				3F18F77018FEA3FE007D65FB /* UIViewController+Stack.h */,
+				3F18F77118FEA3FE007D65FB /* UIViewController+Stack.m */,
 			);
 			name = ELFeedback;
 			path = ../../ELFeedback;
@@ -270,7 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11AD01551858BBA80022C956 /* ELRuntimeClassModifications.m in Sources */,
-				3F18F77218FEA3FE007D65FB /* UIViewController+stack.m in Sources */,
+				3F18F77218FEA3FE007D65FB /* UIViewController+Stack.m in Sources */,
 				3F18F76F18FE9E50007D65FB /* ELViewDataGetter.m in Sources */,
 				11AD01561858BBA80022C956 /* UIWindow+ELMotionEnded.m in Sources */,
 				11EBDA091859C3680048DF7F /* ELFeedbackDataItem.m in Sources */,

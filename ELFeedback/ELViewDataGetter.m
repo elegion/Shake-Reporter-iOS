@@ -7,12 +7,12 @@
 //
 
 #import "ELViewDataGetter.h"
-#import "UIViewController+stack.h"
+#import "UIViewController+Stack.h"
 
 @implementation ELViewDataGetter
 
 
-+(NSDictionary *)getMainInfoAboutViewController
++(NSDictionary *)el_getMainInfoAboutViewController
 {
     return @{@"name": NSStringFromClass([UIViewController topViewController].class),
              @"navigationStack": [UIViewController navigationStackForViewController],
@@ -20,7 +20,7 @@
 }
 
 
-+ (NSDictionary *)getSubviews
++ (NSDictionary *)el_getSubviews
 {
     return [self getMainInfoForView:[UIViewController topViewController].view];
 }
