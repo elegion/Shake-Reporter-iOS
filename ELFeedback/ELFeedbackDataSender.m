@@ -67,8 +67,16 @@ MFMailComposeViewControllerDelegate
                          fileName:@"viewControllerInfo.json"];
     
     [controller addAttachmentData:UIImagePNGRepresentation(dataProvider.snapshotImage) mimeType:@"image/png" fileName:@"screenshot.png"];
-    
-    [self.presentingController presentViewController:controller animated:YES completion:nil];
+
+    if (NO && [MFMailComposeViewController canSendMail] && controller) {
+        [self.presentingController presentViewController:controller animated:YES completion:nil];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"Shake Reporter Error"
+                                    message:@"Your device is not configured to send emails"
+                                   delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil] show];
+    }
 }
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
